@@ -42,3 +42,21 @@ Il sito sfrutta un'infrastruttura **completamente serverless** su AWS per garant
 ├── js/                  # Script JavaScript, incl. chiamate alle API AWS
 ├── README.md            # Questo file
 
+## Collaborazioni
+- Attualmente il repository è privato e lo sviluppo è interno. Tuttavia puoi:
+- Aprire una Issue per segnalare bug
+- Proporre miglioramenti o nuove funzionalità
+- Seguire il progetto per rimanere aggiornato
+
+## Licenza
+Questo progetto è coperto da licenza proprietaria. Tutti i diritti riservati a Ninja Game.
+È vietata la distribuzione, modifica o utilizzo non autorizzato del codice.
+
+## Contatti
+Per proposte di collaborazione o richieste:
+
+🌐 https://ninjagame.it
+
+📩 Email: info@hanamisoftware.com
+Ninja Game © 2025 – All rights reserved.
+
