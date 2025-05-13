@@ -41,6 +41,7 @@ Il sito sfrutta un'infrastruttura **completamente serverless** su AWS per garant
 ├── css/                 # Fogli di stile
 ├── js/                  # Script JavaScript, incl. chiamate alle API AWS
 ├── README.md            # Questo file
+```
 
 ## Collaborazioni
 - Attualmente il repository è privato e lo sviluppo è interno. Tuttavia puoi:
