@@ -21,13 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Validazione nome 
     if (!isValidName(name)) {
-      showMessage('Per favore, inserisci un nome valido (2-50 caratteri)', 'error');
+      showMessage('Please enter a valid name (2-50 characters)', 'danger');
       return;
     }
    
     // Validazione email
     if (!isValidEmail(email)) {
-      showMessage('Per favore, inserisci un indirizzo email valido', 'error');
+      showMessage('Please enter a valid email address', 'danger');
       return;
     }
 
@@ -64,14 +64,14 @@ document.addEventListener('DOMContentLoaded', function() {
       // Successo
         const result = await response.json();
               
-        const successMessage = result.message || 'Grazie per l\'iscrizione! Ti terremo aggiornato.';
+        const successMessage = result.message || 'Thank you for subscribing! We will keep you updated.';
         showMessage(successMessage, 'success');
         nameInput.value = '';
         emailInput.value = '';
 
       } else {
       // Gestisce errori lato server        
-        let errorMessage = 'Si è verificato un errore. Riprova più tardi.';
+        let errorMessage = 'An error occurred. Please try again later.';
 
         try {
           const errorResult = await response.json();
@@ -85,25 +85,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       
         // Mostra codice di stato (debugging)
-        showMessage(`${errorMessage} (Codice: ${response.status})`, 'error');
-        console.error('Errore dal server:', response.status, response.statusText);
+        showMessage(`${errorMessage} (Code: ${response.status})`, 'danger');
+        console.error('Server error:', response.status, response.statusText);
       }
       
     // Richiesta HTTP Fallita
     } catch (error) {
 
       // Gestisce errori di rete o altro
-      let errorMessage = 'Impossibile connettersi al server. Controlla la tua connessione.';
+      let errorMessage = 'Unable to connect to the server. Check your connection.';
   
       // Gestisce casi specifici di errore
       if (error.name === 'AbortError') {
-        errorMessage = 'Connessione scaduta. Riprova più tardi.';
+        errorMessage = 'Connection timed out. Please try again later.';
       } else if (!navigator.onLine) {
-        errorMessage = 'Nessuna connessione internet disponibile.';
+        errorMessage = 'No internet connection available.';
       }
 
-      showMessage(errorMessage, 'error');
-      console.error('Errore di rete:', error);
+      showMessage(errorMessage, 'danger');
+      console.error('Network error:', error);
     }
   });
 
@@ -136,9 +136,9 @@ document.addEventListener('DOMContentLoaded', function() {
       existingMessage.remove();
     }
    
-    // Crea nuovo elemento div messaggio con relativa classe
-    const messageEl = document.createElement('div');
-    messageEl.className = `message ${type}`;
+    // Crea nuovo elemento p messaggio con relativa classe
+    const messageEl = document.createElement('p');
+    messageEl.className = `alert alert-${type} text-${type} message`;
     messageEl.textContent = message;
    
     // Inserisce il messaggio dopo il form

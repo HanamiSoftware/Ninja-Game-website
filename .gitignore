@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.sln
 desktop.ini
 /.github/
 # User-specific files (MonoDevelop/Xamarin Studio)

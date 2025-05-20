@@ -1,0 +1,305 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* colors primitive*/
+
+    --color-neutral--100: #121212;
+    --color-neutral--50: #282828;
+    --color-neutral--30: #575757;
+    --color-neutral-40: #3f3f3f;
+    --color-neutral--20: #717171;
+    --color-neutral--10: #8B8B8B;
+    --color-neutral--0: #fff;
+    --color-brand--50: #fa4d41;
+    --color-brand--40: #FE9954;
+    --color-brand--30: #FF7B68;
+    --color-brand--20: #FF907C;
+    --color-brand--10: #FFA391;
+    --color-brand--0: #FFB6A6;
+    /* colors semantic */
+
+    --background-neutral-primary: var(var(--color-neutral--100));
+    --background-neutral-secondary: var(var(--color-neutral--50));
+    --text-light: var(var(--color-neutral--0));
+    --text-medium: var(var(--color-neutral--10));
+    --text-dark: var(var(--color-neutral--100));
+    --text-red: var(var(--color-brand--0));
+}
+
+/* typography */
+
+h1 {
+    color: var(--text-light);
+    font-family: 'Viga', sans-serif;
+    font-size: 3.5rem;
+    line-height: 115%;
+    letter-spacing: -2%;
+}
+
+p {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 1rem;
+    line-height: 150%;
+}
+
+.text-large-medium {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 1.25rem;
+    line-height: 150%;
+}
+
+.text-small-normal {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 1.85rem;
+    line-height: 150%;
+}
+
+
+/* GESTITO da HANAMY STYLE LIBRARY - modified by Marco Pascali 16/05/2025*/
+/* spacing */
+/*
+    .gap-4 {
+        display: flex;
+        gap: 0.25rem;
+    }
+
+    .gap-8 {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .gap-32 {
+        display: flex;
+        gap: 2rem;
+    }
+*/
+
+
+/* layout */
+
+/* GESTITO da HANAMY STYLE LIBRARY - modified by Marco Pascali 16/05/2025*/
+/*
+    .vertical {
+        flex-direction: column;
+    }
+    */
+
+
+body {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(251, 78, 65, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #121212;
+    color: var(--color-neutral--0);
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Buttons */
+
+.btn-primary-big {
+    background-color: var(--color-brand--40);
+    color: var(--text-light);
+    font-size: 1rem;
+    padding: 14px 20px 16px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    box-shadow: 0px 3px 15px rgba(251, 78, 65, 0.7), /* drop shadow */
+    inset 0px 1px 4px rgba(0, 0, 0, 0.025), /* inner shadow bottom */
+    inset 0px -1px 4px rgba(255, 255, 255, 0.45); /* inner highlight top */
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.button-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0px 5px 18px rgba(251, 78, 65, 0.8), inset 0px 1px 4px rgba(0, 0, 0, 0.03), inset 0px -1px 4px rgba(255, 255, 255, 0.5);
+}
+
+.button-primary:active {
+    transform: translateY(0px);
+    box-shadow: 0px 2px 10px rgba(251, 78, 65, 0.5), inset 0px 1px 4px rgba(0, 0, 0, 0.02), inset 0px -1px 4px rgba(255, 255, 255, 0.4);
+}
+
+/* text input */
+
+/* ADDED by Marco Pascali 17/05/2025*/
+.form-label {
+    color: var(--color-neutral--10);
+    text-align: left;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* ADDED by Marco Pascali 17/05/2025*/
+.message {
+    color: var(--color-neutral--10);
+    text-align: center;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.text-input {
+    padding: 0.8rem;
+    background: var(--color-neutral--50);
+    color: var(--color-neutral--0);
+    border: 1px solid var(--color-brand--20);
+    border-radius: 8px;
+    /*min-width: 250px;*/
+}
+
+/* Imposta la stessa larghezza di main (es. container centrato) */
+
+#welcome-text {
+    color: #fff;
+    font-weight: 300;
+    text-shadow: 0 0 30px #FB4E41;
+    font-size: clamp(1rem, 3vw, 2rem);
+    white-space: nowrap; /* Impedisce il ritorno a capo */
+    align-items: flex-end;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: right;
+    text-align: right;
+    letter-spacing: 0.05em;
+    margin-right: 400px;
+}
+
+
+.tree {
+    position: absolute;
+    max-width: 30vw;
+    height: auto;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.top-left {
+    top: 0;
+    left: 0;
+}
+
+.bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 1rem;
+    max-width: 600px;
+    margin: auto;
+}
+
+.logo {
+    height: 64px;
+    /* width: auto; */
+    /* margin-bottom: 1.5rem; */
+    opacity: 100;
+}
+
+.email-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    opacity: 100;
+}
+
+
+
+/* para cancelar despué de crear en style foundation  .email-form button {
+    padding: 0.8rem 1.2rem;
+    background: #fb4e41;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  .email-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px #fb4e41;
+  }
+  */
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    opacity: 1; /* MODIFIED by Marco Pascali 17/05/2025 */
+}
+
+    .socials img {
+        width: 18px; /* MODIFIED by Marco Pascali 17/05/2025 */
+        filter: brightness(0) invert(1); /* MODIFIED by Marco Pascali 17/05/2025 */
+        transition: filter 0.3s ease;
+    }
+
+        .socials img:hover {
+            filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(255, 255, 255, 0.5)); /* MODIFIED by Marco Pascali 17/05/2025 */
+        }
+
+footer {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    opacity: 100;
+}
+
+    footer a {
+        color: #888;
+        text-decoration: underline;
+    }
+
+.petal {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background-image: url('images/petal.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.title {
+    font-family: 'Viga', sans-serif;
+    font-size: 3rem;
+    margin: 0.5rem 0;
+    display: inline-block;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@media only screen and (max-width: 768px) { /* MODIFIED by Marco PAscali 17/05/2025 */
+
+    /*typography*/
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    /* buttons */
+
+    .btn-primary-big {
+        width: 100%;
+        padding: 0.8rem;
+    }
+
+    .text-input {
+        width: 100%;
+    }
+}
