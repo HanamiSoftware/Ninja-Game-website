@@ -1,0 +1,14 @@
+{
+    "name": "hanamisoftware/hanami-style-library",
+    "description": "Hanami Style Library for Hanami Developers and Designers. It's a Custom Bootstrap Boilerplate with a twist",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "FRANCESCO BIAGINI",
+            "email": "info@hanamisoftware.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

@@ -1,0 +1,117 @@
+/*Hanami Custom Style*/
+@font-face {
+  font-family: "Magilio" !important;
+  src: url("../fonts/MagilioRegular-8Mxvg.otf") format("opentype");
+  src: url("../fonts/MagilioRegular-Yzv2O.ttf") format("truetype");
+  src: url("../fonts/MagilioRegular-Yzv2O.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter.ttf") format("truetype-variation");
+  src: url("../fonts/Inter.ttf") format("truetype") tech("variation");
+  font-weight: 100 900;
+  font-stretch: 25% 150%;
+}
+:root {
+  --main-background: #EFD0CA;
+  --main-white-background: #F7E7E4;
+  --primary-red: #D64933;
+  --secondary-red: #EBBCB3;
+  --primary-blue: #235789;
+  --primary-font: "Magilio";
+  --secondary-font: "Inter";
+  --max-container-width: 1440px;
+}
+
+/*Variable Stili Guida*/
+/*Fine Variabili Sezione*/
+html, body {
+  font-family: var(--primary-font);
+  background-color: #EFD0CA;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container {
+  max-width: var(--max-container-width);
+}
+
+.logo {
+  width: 280px;
+  height: 280px;
+}
+
+.center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.center .col-* {
+  display: inline-block;
+  margin-left: -2px; /* Adjust the value of marging work best with your context */
+  float: none;
+}
+
+.header-text h1 {
+  font-size: 6.5rem;
+  font-weight: 400;
+  color: var(--primary-red);
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+.card-sx, .card-dx {
+  width: auto;
+  min-height: 320px;
+  border-radius: 15px;
+  margin-right: 20px;
+  background-color: var(--main-white-background);
+}
+
+.card-title {
+  font-size: 2.5rem;
+  text-align: left;
+  color: #D64933;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  margin-left: 32px;
+}
+
+.card-content {
+  color: #D64933;
+  margin-left: 32px;
+}
+
+.card-content-element {
+  font-family: var(--secondary-font);
+  font-size: 1rem;
+}
+
+.card-content-element:nth-child(odd) {
+  color: #E59689;
+  font-size: 1.25rem;
+  font-weight: 200;
+  line-height: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-content-element:nth-child(even) {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer .footer-text {
+  font-family: var(--secondary-font);
+  font-style: italic;
+  font-weight: 200;
+  color: var(--primary-red);
+  margin-top: 1rem;
+}
+
+/*# sourceMappingURL=custom.css.map */
