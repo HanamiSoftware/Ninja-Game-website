@@ -31,6 +31,7 @@
             this.glowColor = this.settings.glowColor;
             this.targetFadeIn = this.settings.targetFadeIn ? $(this.settings.targetFadeIn) : null;
             this.onComplete = this.settings.onComplete;
+            this.fontSize = this.settings.fontSize;
 
             this.currentIndex = 0;
             this.letters = [];

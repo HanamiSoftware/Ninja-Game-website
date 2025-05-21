@@ -10,6 +10,7 @@
 *.userosscache
 *.sln.docstates
 *.sln
+*.phpproj
 desktop.ini
 /.github/
 # User-specific files (MonoDevelop/Xamarin Studio)
