@@ -1,88 +1,69 @@
 // Funzione "Subscribe"
-document.addEventListener('DOMContentLoaded', function() {
+
   const form = document.querySelector('.email-form');
   const nameInput = document.querySelector('.name-input');
   const emailInput = document.querySelector('.email-input');
-
+  let cachedFormData = null; // Variabile per memorizzare i dati del form
 
 
 
   // Funzione "Submit"
-  form.addEventListener('submit', async function(event) {
+    form.addEventListener('submit', async function (event) {
 
-    event.preventDefault();
-  
-    
+        event.preventDefault(); // Prevenire il comportamento predefinito del form
+        console.log('submit event fired');
+        // Gestione Nome e Email
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        
 
+        // Validazione nome 
+        if (!isValidName(name)) {
+            showMessage('Please enter a valid name (2-50 characters)', 'danger');
+            return;
+        }
 
-    // Gestione Nome e Email
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
+        // Validazione email
+        if (!isValidEmail(email)) {
+            showMessage('Please enter a valid email address', 'danger');
+            return;
+        }
 
-    // Validazione nome 
-    if (!isValidName(name)) {
-      showMessage('Please enter a valid name (2-50 characters)', 'danger');
-      return;
-    }
-   
-    // Validazione email
-    if (!isValidEmail(email)) {
-      showMessage('Please enter a valid email address', 'danger');
-      return;
-    }
+        cachedFormData = { name, email };
+        turnstile.execute();
+    });
 
-    
-
-
+    async function onTurnstileSuccess(token) {
+    console.log(`Challenge Success ${token}`);
+    if (!cachedFormData) return; // Verifica se i dati del form sono stati memorizzati
     // Richiesta HTTP
     try {
 
-      // timeout
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 10000);
-      
-      // richiesta fetch
       const response = await fetch('https://api.ninjagame.it/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ 
-          name: name,
-          email: email,
-        })
+          body: JSON.stringify({
+              name: cachedFormData.name,
+              email: cachedFormData.email,
+              'cf-turnstile-response':token
+        }),
       });
-     
-      clearTimeout(timeoutId);
-
-
-
-
+      
       // Gestione risposte
-
+      const result = await response.json();
       if (response.ok) {
-      // Successo
-        const result = await response.json();
-              
+      // Successo   
         const successMessage = result.message || 'Thank you for subscribing! We will keep you updated.';
         showMessage(successMessage, 'success');
-        nameInput.value = '';
-        emailInput.value = '';
+          form.reset(); // Resetta il form
+          turnstile.reset(); // Resetta il CAPTCHA
 
       } else {
       // Gestisce errori lato server        
-        let errorMessage = 'An error occurred. Please try again later.';
-
-        try {
-          const errorResult = await response.json();
-
-          // Usa il messaggio di errore dal server se disponibile
-          if (errorResult.message) {
-            errorMessage = errorResult.message;
-          }
-        } catch {
-          // messaggio di default
-        }
+          let errorMessage = 'An error occurred. Please try again later.';
+          turnstile.reset(); // Resetta il CAPTCHA
       
         // Mostra codice di stato (debugging)
         showMessage(`${errorMessage} (Code: ${response.status})`, 'danger');
@@ -92,20 +73,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Richiesta HTTP Fallita
     } catch (error) {
 
+        // Resetta il CAPTCHA in caso di errore
+      turnstile.reset();
       // Gestisce errori di rete o altro
       let errorMessage = 'Unable to connect to the server. Check your connection.';
   
       // Gestisce casi specifici di errore
-      if (error.name === 'AbortError') {
-        errorMessage = 'Connection timed out. Please try again later.';
-      } else if (!navigator.onLine) {
-        errorMessage = 'No internet connection available.';
-      }
 
       showMessage(errorMessage, 'danger');
       console.error('Network error:', error);
+    }finally {
+        // Resetta i dati del form
+        cachedFormData = null;
     }
-  });
+ }
 
 
 
@@ -118,30 +99,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
 
-  // Funzione "Validazione email"
+  
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
- 
-
   
 
-  // Funzione "Messaggio"
+  //Gestione Messaggi e visualizzazione
   function showMessage(message, type) {
 
-    // Rimuove messaggi precedenti
+    
     const existingMessage = document.querySelector('.message');
     if (existingMessage) {
       existingMessage.remove();
     }
    
-    // Crea nuovo elemento p messaggio con relativa classe
+    
     const messageEl = document.createElement('p');
     messageEl.className = `alert alert-${type} text-${type} message`;
     messageEl.textContent = message;
    
-    // Inserisce il messaggio dopo il form
+    
     form.insertAdjacentElement('afterend', messageEl);
   }
-});

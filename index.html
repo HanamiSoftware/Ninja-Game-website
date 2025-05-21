@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="Hanami-Style-Library/css/bootstrap.css"/>
   <link rel="stylesheet" href="css/custom.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Viga&family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
-
+  <script type="text/javascript" src="//challenges.cloudflare.com/turnstile/v0/api.js"></script> 
 </head>
 
 <body>
@@ -19,14 +19,14 @@
     </div>
     <main class="content" style="display:none">
         <div class="logo-container">
-            <img src="assets/image/logo-orizzontale-bianco-noSfondo.svg" alt="Ninja Game Logo" class="logo"/>
+            <img src="assets/image/logo-orizzontale-bianco-noSfondo.svg" alt="Ninja Game Logo" class="logo" />
         </div>
         <div class="mt-4">
             <h1>COMING SOON</h1>
             <p class="text-large-medium">Get ready! Something awesome is coming from the shadow.</p>
         </div>
 
-        <form class="row g-2 align-items-center" novalidate>
+        <form class="email-form row g-2 align-items-center" novalidate>
             <div class="col-md-4">
                 <label for="name" class="form-label text-light">Name</label>
                 <input class="text-input w-100 form-control name-input" id="name" type="text" placeholder="Insert your name..." required />
@@ -42,6 +42,14 @@
                 <button class="btn btn-primary-big w-100" type="submit">Send me updates</button>
             </div>
         </form>
+        <!-- Turnstile (Invisible Widget) -->
+        <div class="col-md-12 mt-4 captcha-wrapper">
+            <div class="cf-turnstile"
+                 data-sitekey="0x4AAAAAABZFoK5YALv5abK-"
+                 data-callback="onTurnstileSuccess"
+                 data-theme="dark">
+            </div>
+        </div>
 
         <div class="socials mb-5 mt-4">
             <a class="m-2" href="https://www.instagram.com/ninjagamehanami/" target="_blank"><img src="Hanami-Style-Library/icons/instagram.svg" alt="Instagram" /></a>
@@ -58,8 +66,6 @@
     <div id="welcome-text"></div>
     <!--fine contenitore welcome text-->
     <!-- SCRIPTS -->
-
-    <script src="js/subscribe.js"></script><!--ADDED BY Marco Pascali on 02/05/2025-->
     <script type="text/javascript" async src="Hanami-Style-Library/js/bootstrap.min.js"></script><!--ADDED BY Marco Pascali on 16/05/2025-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/sakuraAnimation.js"></script>
@@ -70,9 +76,10 @@
                 speed: 0.10,
                 glowColor: '#FB4E41',
                 targetFadeIn: '.content,.tree',
-                fontSize:'2rem'
+                fontSize: '2rem'
             });
         });
     </script>
+    <script src="js/subscribe.js"></script><!--ADDED BY Marco Pascali on 02/05/2025-->
 </body>
 </html>

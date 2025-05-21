@@ -209,31 +209,47 @@ body {
     opacity: 100;
 }
 
-.email-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    opacity: 100;
+
+/*Captcha Styles*/
+.captcha-wrapper {
+    display: inline-block;
+    padding: 1rem;
+    background: #2f1817;
+    border: 1px solid #2f1917;
+    border-radius: 16px;
+    box-shadow: 0 0 12px #2f1917;
+    animation: fadeInNinja 0.8s ease-out;
+    transition: box-shadow 0.3s ease;
+}
+
+    .captcha-wrapper:hover {
+        box-shadow: 0 0 20px #2f1917aa;
+    }
+
+.cf-turnstile iframe {
+    border-radius: 12px !important;
+    filter: contrast(110%) brightness(1.05);
+    transition: filter 0.3s ease;
+}
+
+@keyframes fadeInNinja {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.theme-dark #content {
+    background-color: #2f1a18 !important;
+    border-color: #2f1a18 !important;
 }
 
 
-
-/* para cancelar despué de crear en style foundation  .email-form button {
-    padding: 0.8rem 1.2rem;
-    background: #fb4e41;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-  }
-  
-  .email-form button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 15px #fb4e41;
-  }
-  */
 .socials {
     display: flex;
     justify-content: center;
