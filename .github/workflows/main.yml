@@ -27,4 +27,6 @@ jobs:
           --exclude ".git/*" \
           --exclude ".github/*" \
           --exclude ".gitignore" \
-          --exclude "README.md" \
+          --exclude ".gitattributes" \
+          --exclude "*.md" \
+          --exclude "LICENSE"
