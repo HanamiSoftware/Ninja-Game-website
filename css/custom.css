@@ -137,6 +137,13 @@ body {
     margin-bottom: 0.5rem;
 }
 
+.form-control:focus {
+    background-color: #F6F6F6;
+    border-color: var(--color-brand--50);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem #ffc107f0;
+}
+
 /* ADDED by Marco Pascali 17/05/2025*/
 .message {
     color: var(--color-neutral--10);
@@ -155,21 +162,28 @@ body {
 }
 
 /* Imposta la stessa larghezza di main (es. container centrato) */
+.welcome-container {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 #welcome-text {
     color: #fff;
     font-weight: 300;
     text-shadow: 0 0 30px #FB4E41;
     font-size: clamp(1rem, 3vw, 2rem);
-    white-space: nowrap; /* Impedisce il ritorno a capo */
     align-items: flex-end;
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: right;
-    text-align: right;
-    letter-spacing: 0.05em;
-    margin-right: 400px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.15em 0;
+    letter-spacing: 0;
 }
 
 
@@ -184,11 +198,13 @@ body {
 .top-left {
     top: 0;
     left: 0;
+    width: 273px;
 }
 
 .bottom-right {
     bottom: 0;
     right: 0;
+    width: 221px;
 }
 
 .content {
@@ -207,46 +223,6 @@ body {
     /* width: auto; */
     /* margin-bottom: 1.5rem; */
     opacity: 100;
-}
-
-
-/*Captcha Styles*/
-.captcha-wrapper {
-    display: inline-block;
-    padding: 1rem;
-    background: #2f1817;
-    border: 1px solid #2f1917;
-    border-radius: 16px;
-    box-shadow: 0 0 12px #2f1917;
-    animation: fadeInNinja 0.8s ease-out;
-    transition: box-shadow 0.3s ease;
-}
-
-    .captcha-wrapper:hover {
-        box-shadow: 0 0 20px #2f1917aa;
-    }
-
-.cf-turnstile iframe {
-    border-radius: 12px !important;
-    filter: contrast(110%) brightness(1.05);
-    transition: filter 0.3s ease;
-}
-
-@keyframes fadeInNinja {
-    from {
-        opacity: 0;
-        transform: scale(0.96);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.theme-dark #content {
-    background-color: #2f1a18 !important;
-    border-color: #2f1a18 !important;
 }
 
 

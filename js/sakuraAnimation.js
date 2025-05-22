@@ -119,15 +119,8 @@
          */
         _finishAnimation: function () {
             let self = this;
-            //traslazione del testo verso l'alto
-            this.$element.css({
-                transition: 'transform 6s, opacity 3s',
-                transform: 'translateY(-400px)',
-                opacity: 0
-            }) //ascolto una volta la transizione del testo verso lalto onde evitare che mi parta il fadeout prima del dovuto
-              .one('transitionend', function () {
                 // Dopo la transizione, esegui il fade out
-                $(this).fadeOut(600, function () {
+                this.$element.fadeOut(600, function () {
                     if (self.targetFadeIn) {
                         self.targetFadeIn.fadeIn(600);
                     }
@@ -136,7 +129,6 @@
                     }
                     self.$element.trigger('sakuraAnimationComplete');
                 });
-            });
         },
 
         /**
