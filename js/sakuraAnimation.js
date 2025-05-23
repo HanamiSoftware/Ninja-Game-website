@@ -32,6 +32,7 @@
             this.targetFadeIn = this.settings.targetFadeIn ? $(this.settings.targetFadeIn) : null;
             this.onComplete = this.settings.onComplete;
             this.fontSize = this.settings.fontSize;
+            this.delayToFadein = this.settings.delayToFadein;
 
             this.currentIndex = 0;
             this.letters = [];
@@ -120,7 +121,7 @@
         _finishAnimation: function () {
             let self = this;
                 // Dopo la transizione, esegui il fade out
-                this.$element.fadeOut(600, function () {
+            this.$element.delay(this.settings.delayToFadein).fadeOut(600, function () {
                     if (self.targetFadeIn) {
                         self.targetFadeIn.fadeIn(600);
                     }
@@ -159,6 +160,7 @@
         speed: 0.05,           // secondi per lettera
         fontSize: '3rem',
         glowColor: '#FB4E41',
+        delayToFadein: 1000, // millisecondi prima di eseguire fadeIn su targetFadeIn
         targetFadeIn: null,
         onComplete: null
     };
