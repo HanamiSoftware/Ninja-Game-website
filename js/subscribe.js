@@ -1,6 +1,7 @@
 // Funzione "Subscribe"
 
-  const form = document.querySelector('.email-form');
+const form = document.querySelector('.email-form');
+const formContainer = document.querySelector('.form-container');
   const nameInput = document.querySelector('.name-input');
   const emailInput = document.querySelector('.email-input');
   let cachedFormData = null; // Variabile per memorizzare i dati del form
@@ -114,12 +115,14 @@
     if (existingMessage) {
       existingMessage.remove();
     }
+
+        const messageElementContainer = document.createElement('div');
+        messageElementContainer.className = 'message-container row';
+        const messageEl = document.createElement('p');
+        messageEl.className = `col-md-12 mt-4 alert alert-${type} text-${type} message`;
+        messageEl.textContent = message;
+        messageElementContainer.appendChild(messageEl);
    
-    
-    const messageEl = document.createElement('p');
-    messageEl.className = `alert alert-${type} text-${type} message`;
-    messageEl.textContent = message;
-   
-    
-    form.insertAdjacentElement('afterend', messageEl);
+
+      form.appendChild(messageElementContainer);
   }

@@ -28,23 +28,30 @@
             <h1>COMING SOON</h1>
             <p class="text-large-medium">Get ready! Something awesome is coming from the shadow.</p>
         </div>
+        <div class="container form-container d-flex align-items-center justify-content-center">
+            <form class="email-form w-100" novalidate>
+                <div class="row">
+                    <div class="col-md-11 mx-auto">
+                        <label for="name" class="form-label text-light">Name</label>
+                        <input class="text-input w-100 form-control name-input" id="name" type="text" placeholder="Insert your name..." required />
+                    </div>
+                </div>
 
-        <form class="email-form row g-2 align-items-center" novalidate>
-            <div class="col-md-4">
-                <label for="name" class="form-label text-light">Name</label>
-                <input class="text-input w-100 form-control name-input" id="name" type="text" placeholder="Insert your name..." required />
-            </div>
+                <div class="row">
+                    <div class="col-md-11 mx-auto mt-4">
+                        <label for="email" class="form-label text-light">E-mail</label>
+                        <input class="text-input w-100 form-control email-input" id="email" type="email" placeholder="Your@email.ext" required />
+                    </div>
+                </div>
 
-            <div class="col-md-4">
-                <label for="email" class="form-label text-light">E-mail</label>
-                <input class="text-input w-100 form-control email-input" id="email" type="email" placeholder="Your@email.ext" required />
-            </div>
+                <div class="row">
+                    <div class="col-md-11 mx-auto mt-4">
+                        <button class="btn btn-primary-big w-100" type="submit">Send me updates</button>
+                    </div>
+                </div>
 
-            <div class="col-md-4">
-                <label class="form-label invisible">Submit</label>
-                <button class="btn btn-primary-big w-100" type="submit">Send me updates</button>
-            </div>
-        </form>
+            </form>
+        </div>
         <!-- Turnstile (Invisible Widget) -->
         <div class="col-md-12 mt-4 captcha-wrapper">
             <div class="cf-turnstile"
@@ -77,7 +84,8 @@
                 speed: 0.10,
                 glowColor: '#FB4E41',
                 targetFadeIn: '.content,.tree',
-                fontSize: '3rem'
+                delayToFadeIn:2000,
+                fontSize: '2rem'
             });
         });
     </script>

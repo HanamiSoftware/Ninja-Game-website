@@ -5,29 +5,50 @@
 }
 
 :root {
-    /* colors primitive*/
+    /* colors primitive */
 
-    --color-neutral--100: #121212;
-    --color-neutral--50: #282828;
-    --color-neutral--30: #575757;
+    --color-brand-black: #121212;
+    --color-brand-red: #fb4e41;
+    --color-brand-white: #ffffff;
+    --color-neutral-0: #ffffff;
+    --color-neutral-10: #8b8b8b;
+    --color-neutral-20: #717171;
+    --color-neutral-30: #575757;
     --color-neutral-40: #3f3f3f;
-    --color-neutral--20: #717171;
-    --color-neutral--10: #8B8B8B;
-    --color-neutral--0: #fff;
-    --color-brand--50: #fa4d41;
-    --color-brand--40: #FE9954;
-    --color-brand--30: #FF7B68;
-    --color-brand--20: #FF907C;
-    --color-brand--10: #FFA391;
-    --color-brand--0: #FFB6A6;
+    --color-neutral-50: #282828;
+    --color-neutral-100: #121212;
+    --color-primary-neutral-0: #ffb6a6;
+    --color-primary-neutral-10: #ffa391;
+    --color-primary-neutral-20: #ff907c;
+    --color-primary-neutral-30: #ff7b68;
+    --color-primary-neutral-40: #fe6654;
+    --color-primary-neutral-50: #fa4d41;
+    --color-system-error-red: #e85a50;
+    --color-system-error-red-light: #fef3f2;
+    --color-system-success-green: #04d87f;
+    --color-system-success-green-light: #ecfdf3;
+    --color-system-warning-yellow: #fbbb14;
+    --color-system-warning-yellow-light: #fff9ea;
+
     /* colors semantic */
 
-    --background-neutral-primary: var(var(--color-neutral--100));
-    --background-neutral-secondary: var(var(--color-neutral--50));
-    --text-light: var(var(--color-neutral--0));
-    --text-medium: var(var(--color-neutral--10));
-    --text-dark: var(var(--color-neutral--100));
-    --text-red: var(var(--color-brand--0));
+    --background-brand-primary: var(--color-primary-neutral-50);
+    --background-brand-secondary: var(--color-primary-neutral-0);
+    --background-error-light: var(--color-system-error-red-light);
+    --background-neutral-primary: var(--color-neutral-100);
+    --background-neutral-secondary: var(--color-neutral-50);
+    --background-neutral-tertiary: var(--color-neutral-40);
+    --background-success-light: var(--color-system-success-green-light);
+    --background-warning-light: var(--color-system-warning-yellow-light);
+    --text-dark: var(--color-neutral-100);
+    --text-smoke-grey: #C0C0C0;
+    --text-error: var(--color-system-error-red);
+    --text-light: var(--color-neutral-0);
+    --text-light-grey: #B0B0B0;
+    --text-medium: var(--color-neutral-10);
+    --text-red: var(--color-primary-neutral-0);
+    --text-success: var(--color-system-success-green);
+    --text-warning: var(--color-system-warning-yellow);
 }
 
 /* typography */
@@ -58,41 +79,10 @@ p {
     line-height: 150%;
 }
 
-
-/* GESTITO da HANAMY STYLE LIBRARY - modified by Marco Pascali 16/05/2025*/
-/* spacing */
-/*
-    .gap-4 {
-        display: flex;
-        gap: 0.25rem;
-    }
-
-    .gap-8 {
-        display: flex;
-        gap: 0.5rem;
-    }
-
-    .gap-32 {
-        display: flex;
-        gap: 2rem;
-    }
-*/
-
-
-/* layout */
-
-/* GESTITO da HANAMY STYLE LIBRARY - modified by Marco Pascali 16/05/2025*/
-/*
-    .vertical {
-        flex-direction: column;
-    }
-    */
-
-
 body {
     font-family: 'Zen Kaku Gothic New', sans-serif;
     background: radial-gradient(50% 50% at 50% 50%, rgba(251, 78, 65, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #121212;
-    color: var(--color-neutral--0);
+    color: var(--color-neutral-0);
     width: 100vw;
     min-height: 100vh;
     display: flex;
@@ -103,12 +93,12 @@ body {
 /* Buttons */
 
 .btn-primary-big {
-    background-color: var(--color-brand--40);
+    height:45px;
+    background-color: #FE9954;
     color: var(--text-light);
     font-size: 1rem;
-    padding: 14px 20px 16px 20px;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
     font-family: 'Zen Kaku Gothic New', sans-serif;
     box-shadow: 0px 3px 15px rgba(251, 78, 65, 0.7), /* drop shadow */
@@ -131,34 +121,53 @@ body {
 
 /* ADDED by Marco Pascali 17/05/2025*/
 .form-label {
-    color: var(--color-neutral--10);
+    color: var(--color-neutral-10);
     text-align: left;
     display: block;
     margin-bottom: 0.5rem;
 }
 
-.form-control:focus {
-    background-color: #F6F6F6;
-    border-color: var(--color-brand--50);
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem #ffc107f0;
+.form-control {
+    height:45px;
+    color: var(--text-light);
+    border: 1px solid transparent;
+    /**
+        Non uso border-image per impostare un gradiente lineare ma un trucco con doppio background.
+        Applicando un raggio al bordo border-image sostituendo il bordo con una immagine non fa il 
+        render degli angoli arrotondati.
+
+        Il primo gradient (padding-box) colora il contenuto.
+
+        Il secondo (border-box) colora il bordo con gradiente.
+
+        border-radius funziona perfettamente e arrotonda anche il bordo.
+     **/
+
+    background: linear-gradient(var(--background-neutral-secondary), var(--background-neutral-secondary)) padding-box, /* sfondo del controllo input */
+    linear-gradient(to left, #fff, #ffa391, #ff7b68) border-box; /* bordo gradiente */
+    border-radius: 4px;
+    padding: 12px 12px;
 }
 
+    .form-control:focus {
+        background-color: var(--background-neutral-secondary);
+        border: none;
+        outline: 0;
+        color: var(--text-light);
+        box-shadow: 0px 3px 15px rgba(251, 78, 65, 0.7), /* drop shadow */
+        inset 0px 1px 4px rgba(0, 0, 0, 0.025), /* inner shadow bottom */
+        inset 0px -1px 4px rgba(255, 255, 255, 0.45);
+    }
+
+    .form-control::placeholder {
+        color: var(--text-medium);
+    }
 /* ADDED by Marco Pascali 17/05/2025*/
 .message {
-    color: var(--color-neutral--10);
+    color: var(--color-neutral-10);
     text-align: center;
     display: block;
-    margin-bottom: 0.5rem;
-}
-
-.text-input {
-    padding: 0.8rem;
-    background: var(--color-neutral--50);
-    color: var(--color-neutral--0);
-    border: 1px solid var(--color-brand--20);
-    border-radius: 8px;
-    /*min-width: 250px;*/
+    margin-bottom: 1rem;
 }
 
 /* Imposta la stessa larghezza di main (es. container centrato) */
@@ -185,7 +194,6 @@ body {
     margin: 0.15em 0;
     letter-spacing: 0;
 }
-
 
 .tree {
     position: absolute;
@@ -224,7 +232,6 @@ body {
     /* margin-bottom: 1.5rem; */
     opacity: 100;
 }
-
 
 .socials {
     display: flex;
@@ -278,7 +285,7 @@ footer {
 
 @media only screen and (max-width: 768px) { /* MODIFIED by Marco PAscali 17/05/2025 */
 
-    /*typography*/
+    /* typography */
 
     h1 {
         font-size: 2.5rem;
