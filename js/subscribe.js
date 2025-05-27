@@ -1,14 +1,28 @@
-// Funzione "Subscribe"
+    const form = document.querySelector('.email-form');
+    const formContainer = document.querySelector('.form-container');
+    const nameInput = document.querySelector('.name-input');
+    const emailInput = document.querySelector('.email-input');
+    let cachedFormData = null; // Variabile per memorizzare i dati del form
 
-const form = document.querySelector('.email-form');
-const formContainer = document.querySelector('.form-container');
-  const nameInput = document.querySelector('.name-input');
-  const emailInput = document.querySelector('.email-input');
-  let cachedFormData = null; // Variabile per memorizzare i dati del form
+//listener per verifica della validazione lato server
+document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("verified") === "true") {
+        const alert = document.createElement("div");
+        alert.className = "alert alert-success alert-dismissible fade show";
+        alert.role = "alert";
+        alert.innerHTML = `
+        <strong>Registrazione completata!</strong> Ora sei iscritto alla newsletter di Ninja Game.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      `;
+        document.body.prepend(alert);
 
+        // Pulizia URL dalla query string (evita ripetizione al refresh)
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+});
 
-
-  // Funzione "Submit"
+    // Funzione di gestione del CAPTCHA Turnstile e del modulo di iscrizione
     form.addEventListener('submit', async function (event) {
 
         event.preventDefault(); // Prevenire il comportamento predefinito del form
@@ -46,43 +60,36 @@ const formContainer = document.querySelector('.form-container');
           'Content-Type': 'application/json'
         },
           body: JSON.stringify({
-              name: cachedFormData.name,
-              email: cachedFormData.email,
+              Name: cachedFormData.name,
+              Email: cachedFormData.email,
               'cf-turnstile-response':token
         }),
       });
       
       // Gestione risposte
       const result = await response.json();
-      if (response.ok) {
+      if (response.ok && result.success) {
       // Successo   
-        const successMessage = result.message || 'Thank you for subscribing! We will keep you updated.';
-        showMessage(successMessage, 'success');
+          const successMessage = result.message;
+          showMessage(`${successMessage} (Code: ${result.statusCode})`, 'success');
           form.reset(); // Resetta il form
           turnstile.reset(); // Resetta il CAPTCHA
 
       } else {
-      // Gestisce errori lato server        
-          let errorMessage = 'An error occurred. Please try again later.';
+          // Gestisce errori lato server        
+          let errorMessage = result.message;
           turnstile.reset(); // Resetta il CAPTCHA
       
-        // Mostra codice di stato (debugging)
-        showMessage(`${errorMessage} (Code: ${response.status})`, 'danger');
-        console.error('Server error:', response.status, response.statusText);
+          // Mostra codice di stato (debugging)
+          showMessage(`${errorMessage} : ${result.statusCode}: ${result.data}`, 'danger');
       }
       
-    // Richiesta HTTP Fallita
-    } catch (error) {
+    } catch (ex) {
 
         // Resetta il CAPTCHA in caso di errore
-      turnstile.reset();
-      // Gestisce errori di rete o altro
-      let errorMessage = 'Unable to connect to the server. Check your connection.';
-  
-      // Gestisce casi specifici di errore
+        turnstile.reset();
+        showMessage(`${ex.message} : ${errorMessage} : ${result.statusCode}: ${result.data}`, 'danger');
 
-      showMessage(errorMessage, 'danger');
-      console.error('Network error:', error);
     }finally {
         // Resetta i dati del form
         cachedFormData = null;
