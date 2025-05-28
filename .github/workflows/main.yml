@@ -8,7 +8,7 @@ on:
       - '**/*.html'
       - '**/*.css'
       - '**/*.js'
-      - 'assets/**
+      - 'assets/**'
 jobs:
   deploy:
     runs-on: ubuntu-latest
