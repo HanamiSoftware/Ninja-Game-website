@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     async function onTurnstileSuccess(token) {
-    console.log(`Challenge Success ${token}`);
     if (!cachedFormData) return; // Verifica se i dati del form sono stati memorizzati
     // Richiesta HTTP
     try {
@@ -71,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (response.ok && result.success) {
       // Successo   
           const successMessage = result.message;
-          showMessage(`${successMessage} (Code: ${result.statusCode})`, 'success');
+          showMessage(`${successMessage}`, 'success');
           form.reset(); // Resetta il form
           turnstile.reset(); // Resetta il CAPTCHA
 
