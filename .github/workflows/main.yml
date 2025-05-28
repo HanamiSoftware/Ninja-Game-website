@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - '.gitignore'
-      - 'README.md'
-      - '.github/**'
+    paths:
+      - '**/*.html'
+      - '**/*.css'
+      - '**/*.js'
+      - 'assets/**
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -26,10 +27,12 @@ jobs:
       - name: Sync files to S3
         run: |
           aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} \
-          --delete \
           --exclude ".git/*" \
           --exclude ".github/*" \
           --exclude ".gitignore" \
           --exclude ".gitattributes" \
           --exclude "*.md" \
-          --exclude "LICENSE"
+          --exclude "AWSLogs/**" \
+          --exclude "LICENSE" \
+          --exclude "*.phpproj" \
+          --delete 
