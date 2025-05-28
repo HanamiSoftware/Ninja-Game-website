@@ -8,6 +8,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const params = new URLSearchParams(window.location.search);
     if (params.get("verified") === "true") {
+        const mainContainer = document.querySelector('main');
         const alert = document.createElement("div");
         alert.className = "alert alert-success alert-dismissible fade show";
         alert.role = "alert";
@@ -15,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <strong>Registrazione completata!</strong> Ora sei iscritto alla newsletter di Ninja Game.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       `;
-        document.body.prepend(alert);
+        mainContainer.prepend(alert);
 
         // Pulizia URL dalla query string (evita ripetizione al refresh)
         window.history.replaceState({}, document.title, window.location.pathname);
