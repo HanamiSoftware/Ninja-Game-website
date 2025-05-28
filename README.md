@@ -11,7 +11,7 @@
 
 ---
 
-## ­ Linee guida per lâ€™implementazione
+## ­ Linee guida per l'implementazione
 
 ### Background
 - Gradiente radiale rosso al centro su sfondo --background-neutral-primary (`#121212`).
@@ -26,7 +26,6 @@
 - **Sottotitolo** con messaggio teaser in --text-regular-medium (Zen Kaku Gothic New - 16px).
 - **Form email** con input e bottone.
 - **Link social** in fondo.
-- **Footer** con testo "HANAMI SOFTWARE â€“ Contact us" in --tagline.
 
 ---
 
