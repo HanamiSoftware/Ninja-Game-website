@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Gestione Nome e Email
         const name = nameInput.value.trim();
         const email = emailInput.value.trim();
+        const btnSubmit = form.querySelector('#btnSubmit');
         
 
         // Validazione nome 
@@ -47,6 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         cachedFormData = { name, email };
         turnstile.execute();
+        btnSubmit.disabled = true; // Disabilita il pulsante di invio per evitare invii multipli
+        btnSubmit.textContent = 'Submitting...'; // Cambia il testo del pulsante
     });
 
     async function onTurnstileSuccess(token) {
@@ -93,6 +96,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }finally {
         // Resetta i dati del form
         cachedFormData = null;
+        btnSubmit.disabled = false; // Riabilita il pulsante di invio
+        btnSubmit.textContent = 'Send me updates'; // Ripristina il testo del pulsante
     }
  }
 
