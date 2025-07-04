@@ -60,13 +60,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const response = await fetch('https://api.ninjagame.it/subscribe', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+              'Content-Type': 'application/x-www-form-urlencoded'
         },
-          body: JSON.stringify({
-              Name: cachedFormData.name,
-              Email: cachedFormData.email,
-              'cf-turnstile-response':token
-        }),
+          body:
+              'Name=' + encodeURIComponent(cachedFormData.name) + '&Email=' + encodeURIComponent(cachedFormData.email) + '&cf-turnstile-response=' + encodeURIComponent(token)
+        ,
       });
       
       // Gestione risposte
