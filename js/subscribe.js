@@ -59,12 +59,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const response = await fetch('https://api.ninjagame.it/subscribe', {
         method: 'POST',
-        headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-        },
-          body:
-              'Name=' + encodeURIComponent(cachedFormData.name) + '&Email=' + encodeURIComponent(cachedFormData.email) + '&cf-turnstile-response=' + encodeURIComponent(token)
-        ,
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              Name: cachedFormData.name,
+              Email: cachedFormData.email,
+              'cf-turnstile-response': token
+          }),
       });
       
       // Gestione risposte
