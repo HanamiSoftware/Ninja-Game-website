@@ -21,6 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // Pulizia URL dalla query string (evita ripetizione al refresh)
         window.history.replaceState({}, document.title, window.location.pathname);
     }
+    await fetch('https://api.ninjagame.it/warmup', {
+        method: 'POST',
+        headers: {
+            'x-ninja-code': 'Ninj@G@me2025'
+        }
+    });
 });
 
     // Funzione di gestione del CAPTCHA Turnstile e del modulo di iscrizione
@@ -71,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
       // Gestione risposte
       const result = await response.json();
-      if (response.ok && result.success) {
+      if (result.success) {
       // Successo   
           const successMessage = result.message;
           showMessage(`${successMessage}`, 'success');
