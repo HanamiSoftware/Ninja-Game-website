@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Pulizia URL dalla query string (evita ripetizione al refresh)
         window.history.replaceState({}, document.title, window.location.pathname);
     }
-    await fetch('https://api.ninjagame.it/warmup', {
+   fetch('https://api.ninjagame.it/warmup', {
         method: 'POST',
         headers: {
             'x-ninja-code': 'Ninj@G@me2025'
