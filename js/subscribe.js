@@ -84,14 +84,14 @@ document.addEventListener("DOMContentLoaded", function () {
           turnstile.reset(); // Resetta il CAPTCHA
       
           // Mostra codice di stato (debugging)
-          showMessage(`${errorMessage} : ${result.statusCode}: ${result.data}`, 'danger');
+          showMessage(`${errorMessage} : ${result.data.Message}`, 'danger');
       }
       
     } catch (ex) {
 
         // Resetta il CAPTCHA in caso di errore
         turnstile.reset();
-        showMessage(`${ex.message} : ${errorMessage} : ${result.statusCode}: ${result.data}`, 'danger');
+        showMessage(`${ex.message} : ${errorMessage} : ${result.data.Message}`, 'danger');
 
     }finally {
         // Resetta i dati del form
