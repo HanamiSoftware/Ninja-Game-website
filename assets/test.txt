@@ -1,1 +1,1 @@
-test deployment on the hosting Plesk
+test deployment on the Hosting
