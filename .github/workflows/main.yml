@@ -26,8 +26,8 @@ jobs:
           local-dir: ./ 
           server-dir: /httpdocs/test/
           exclude: | 
-            .git/*
-            .github/*
+            .git/**
+            .github/**
             .gitignore
             .gitattributes
             *.md
