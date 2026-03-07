@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TS732V6Z');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Hanami Software - Innovative Solutions -" />
+    <title>NinjaGame Global Propagation</title>
+    <link rel="stylesheet" href="Hanami-Style-Library/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Viga&family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/map.css" />
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TS732V6Z"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div>
+        <img src="assets/image/cherry-top-left.png" alt="Cherry blossom top left" class="tree top-left" style="display:none" />
+        <img src="assets/image/cherry-bottom-right.png" alt="Cherry blossom bottom right" class="tree bottom-right" style="display:none" />
+    </div>
+    <main class="content">
+        <div class="logo-container">
+            <img src="assets/image/logo-orizzontale-bianco-noSfondo.svg" alt="Ninja Game Logo" class="logo" />
+        </div>
+        <div class="mt-4">
+            <h1>COMING SOON</h1>
+            <p class="text-large-medium">Preparati! Qualcosa di fantastico sta arrivando dall'ombra.</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="map"></div>
+                </div>
+            </div>
+            <!--<div class="row">
+                <div class="col-md-12">
+                    <div class="row" id="info">
+                        <div class="col-md-6" id="spread">Diffusione Globale: 0 km</div>
+                        <div class="col-md-6" id="level">Livello di Propagazione: -</div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+
+        <div class="socials mb-5 mt-4">
+            <a class="m-2" href="https://www.instagram.com/ninjagamehanami/" target="_blank"><img src="Hanami-Style-Library/icons/instagram.svg" alt="Instagram" /></a>
+            <a class="m-2" href="#"><img src="Hanami-Style-Library/icons/discord.svg" alt="Discord" /></a>
+            <a class="m-2" href="https://www.facebook.com/profile.php?id=61574117825368"><img src="Hanami-Style-Library/icons/facebook.svg" alt="Facebook" /></a>
+        </div>
+
+        <footer>
+            <p>Powered by HANAMI SOFTWARE</p>
+        </footer>
+
+    </main>
+
+    <script type="text/javascript" async src="Hanami-Style-Library/js/bootstrap.min.js"></script><!--ADDED BY Marco Pascali on 16/05/2025-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-ant-path" type="text/javascript"></script>
+    <script src="js/map.js" defer></script>
+</body>
+</html>
