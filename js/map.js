@@ -8,7 +8,8 @@
         { lat: 52.52, lng: 13.40, time: 1710000020 }, // Berlino
         { lat: 40.71, lng: -74.00, time: 1710000100 },// New York
         { lat: 34.05, lng: -118.24, time: 1710000150 }, // Los Angeles
-        { lat: 35.68, lng: 139.75, time: 1710000155 } //Tokio
+        { lat: 35.68, lng: 139.75, time: 1710000155 }, //Tokio
+        { lat: 46.94809, lng: 7.44744, time: 1773000005100 } // Berna
     ];
 
     // --- Utility: Haversine distance (km) ---
